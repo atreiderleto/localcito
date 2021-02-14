@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 const FooterInfo = styled.footer`
-    margin-top: 40px;
+    margin-top: 30px;
     text-align: center;
     color: #CCCCCC;
 `;

@@ -15,7 +15,7 @@ import foto3 from '../img/carousel/foto3.png';
 const SubTitle = styled.h3 `
     font-size: 35px;
     color: #1B2B71;
-    margin: 10px 0px 10px;
+    margin: 30px 0px 10px;
 `;
 
 const Container = styled.div`
