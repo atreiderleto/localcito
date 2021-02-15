@@ -108,12 +108,8 @@ const Locale = styled.button`
         width: 30%;
     }
 
-    @media (max-width: 1024px) {
-        width: 30%;
-    }
-
     @media (max-width: 834px) {
-        width: 39%;
+        width: 42%;
     }
 
     @media (max-width: 414px) {

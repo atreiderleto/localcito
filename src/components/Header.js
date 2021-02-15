@@ -1,15 +1,21 @@
 import logo from '../img/header/logo.svg'
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
-const HeaderContainer = styled.header `
+const HeaderContainer = styled.header`
     display: flex;
     justify-content: space-between;
     justify-items: flex-start;
     padding: 10px;
     margin-bottom: 15px;
 
+    a {
+        text-decoration: none;
+    }
+
 
     @media (max-width: 1024px) {
+        margin-top: 30px;
         padding: 0px;
     }
 
@@ -19,23 +25,25 @@ const HeaderContainer = styled.header `
 
 `;
 
-const Logo = styled.div `
+const Logo = styled.div`
     display: flex;
     flex-flow: row wrap;
     align-items: center;
 `;
 
-const Titulo = styled.h1 `
+const Titulo = styled.h1`
     margin: 0px 0px 0px 10px;
     font-size: 25px;
     color: #1B2B71;
+    
 `;
 
 const TituloSub = styled.span`
     color: #FFD23F;
+    
 `;
 
-const Menu =  styled.nav `
+const Menu = styled.nav`
     width: 26%;
 
     @media (max-width: 1240px) {
@@ -66,13 +74,12 @@ const NavUl = styled.nav`
         
 
         a {
-            text-decoration: none;
             color: #1B2B71;
         }
     }
 `;
 
-const Singin = styled.li `
+const Singin = styled.li`
     padding: 10px;
     background-color: #FFD23F;
     transition: ease 300ms;
@@ -92,22 +99,22 @@ const Singin = styled.li `
         }
     }
 `;
-    
+
 
 
 const Header = () => {
     return (
         <HeaderContainer>
             <Logo>
-                <img src={logo} alt="logo" />
-                <Titulo>Local<TituloSub>sito</TituloSub></Titulo>
+                <Link to='/'><img src={logo} alt="logo" /></Link>
+                <Link to='/'><Titulo>Local<TituloSub>sito</TituloSub></Titulo></Link>
             </Logo>
 
             <Menu>
                 <NavUl>
-                    <li><a href="#">Como funciona?</a></li>
-                    <li><a href="#">Registrar mi Local</a></li>
-                    <Singin><a href="#">Ingresar</a></Singin>
+                    <li><Link to="howitworks">Como funciona?</Link></li>
+                    <li><Link to='/singup'>Registrar mi Local</Link></li>
+                    <Singin><Link to='/singin'>Ingresar</Link></Singin>
                 </NavUl>
             </Menu>
         </HeaderContainer>
