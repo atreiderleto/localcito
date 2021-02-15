@@ -11,7 +11,7 @@ const ContainerSearch = styled.div`
     padding: 0px;
     border-radius: 20px;
 
-    @media (max-width: 375px) { 
+    @media (max-width: 414px) { 
         height: 300px;
         background-size: cover;
         padding: 30px;
@@ -22,7 +22,11 @@ const ContainerSearch = styled.div`
 const Container = styled.div`
     padding: 60px;
 
-    @media (max-width: 375px) { 
+    @media (max-width: 1240px) {
+        padding: 40px;
+    }
+
+    @media (max-width: 414px) { 
         padding: 0px;
     }    
 `;
@@ -32,7 +36,24 @@ const Titulo = styled.h2`
     font-size: 50px;
     color: #1B2B71;
 
-    @media (max-width: 375px) { 
+    @media (max-width: 1240px) { 
+        width: 50%;
+    }
+
+    @media (max-width: 1024px) { 
+        width: 55%;
+    }
+
+    @media (max-width: 834px) { 
+        width: 75%;
+    }
+
+    @media (max-width: 768px) { 
+        font-size: 35px;
+    }
+
+
+    @media (max-width: 414px) { 
         display: none;
     }
 
@@ -44,16 +65,21 @@ const SelectContainer = styled.div`
     select:nth-of-type(2) {
         margin-left: 20px;
 
-        @media (max-width: 375px) { 
+       }
+
+        @media (max-width: 414px) { 
             margin-left: 0px;
-            margin-top: 50px;
+            margin-top: 30px;
+
+            select:nth-of-type(2) {
+                margin-top: 30px;
+                margin-left: 0px;
+
+       }
         }
 
         
-    }
-
-    
-    
+    } 
 `;
 
 const Select = styled.select`
@@ -81,8 +107,14 @@ const Select = styled.select`
         border-color: #FFD23F;
     }
 
-    @media (max-width: 375px) { 
+    @media (max-width: 1240px) { 
+         width: 30%;
+    }
+
+    @media (max-width: 414px) { 
         width: 100%;
+        margin-left: 0px;
+        margin-top: 20px;
     }
     
 `;
@@ -102,11 +134,24 @@ const SearchBtn = styled.button`
     background-color: #FFD23F;
     font-size: 18px;
     border-radius: 10px;
+
     img { 
         margin-left: 5px;
     }
 
-    @media (max-width: 375px) { 
+    @media (max-width: 1240px) { 
+         width: 15%;
+    }
+
+    @media (max-width: 834px) { 
+        width: 18%;
+    }
+
+    @media (max-width: 768px) { 
+        width: 20%;
+    }
+
+    @media (max-width: 414px) { 
         width: 100%;
         margin-left: 0px;
         margin-top: 50px;

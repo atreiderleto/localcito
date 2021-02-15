@@ -5,7 +5,11 @@ const FooterInfo = styled.footer`
     text-align: center;
     color: #CCCCCC;
 
-    @media (max-width: 375px) {
+    @media (max-width: 1240px) {
+        margin-top: 60px;
+    }
+
+    @media (max-width: 414px) {
         margin-bottom: 30px;
     }
 `;

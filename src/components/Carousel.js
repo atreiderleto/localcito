@@ -21,7 +21,12 @@ const SubTitle = styled.h3`
         color: #FFD23F;
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 1240px) {
+       margin-bottom: 40px;
+    }
+
+    @media (max-width: 414px) {
+        margin-bottom: 10px;
         padding: 20px 20px 10px 10px;
         font-size: 30px;
     }
@@ -32,7 +37,7 @@ const Container = styled.div`
     justify-content: space-between;
     width: 100%;
     
-    @media (max-width: 375px) {
+    @media (max-width: 414px) {
         padding: 0px;
         font-size: 20px;
     }
@@ -47,7 +52,16 @@ const InfoContainer = styled.div`
         color: #A0A3BD;
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 1240px) {
+        width: 80%;
+    }
+
+
+    @media (max-width: 1024px) {
+        width: 81%;
+    }
+
+    @media (max-width: 414px) {
         width: 96%;
         
     }
@@ -57,7 +71,11 @@ const InfoContainer = styled.div`
 const Info = styled.div`
     width: 100%;
 
-    @media (max-width: 375px) {
+    @media (max-width: 834px) {
+        font-size: 12px;
+    }
+
+    @media (max-width: 414px) {
         width: 100%;
         padding-left: 20px;
         margin-top: 0px;
@@ -86,7 +104,19 @@ const Locale = styled.button`
         color: #FFD23F;  
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 1240px) {
+        width: 30%;
+    }
+
+    @media (max-width: 1024px) {
+        width: 30%;
+    }
+
+    @media (max-width: 834px) {
+        width: 39%;
+    }
+
+    @media (max-width: 414px) {
         width: 50%;
     }
 `;
@@ -94,9 +124,10 @@ const Locale = styled.button`
 
 //carousel show elemenets by width
 const responsive = {
-    0: { items: 1 },    
+    0: { items: 1 },
     568: { items: 2 },
-    1024: { items: 3 },
+    1024: { items: 2 },
+    1240: { items: 3},
 };
 
 const items = [
@@ -121,7 +152,7 @@ const items = [
             </Info>
             <Locale>
                 Restaurant
-        </Locale>
+            </Locale>
         </InfoContainer>
     </div>,
 
@@ -147,7 +178,7 @@ const items = [
             </Info>
             <Locale>
                 Restaurant
-    </Locale>
+            </Locale>
         </InfoContainer>
     </div>,
 
@@ -186,10 +217,10 @@ const Carousel = () => (
                 mouseTracking
                 items={items}
                 responsive={responsive}
-                // autoPlay
-                // infinite
-                // autoPlayInterval={1000}
-                // animationDuration={1000}
+                autoPlay
+                infinite
+                autoPlayInterval={10000}
+                animationDuration={1000}
                 animationType="fadeout"
                 touchTracking={true}
                 disableDotsControls={true}

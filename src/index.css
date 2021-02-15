@@ -11,10 +11,35 @@
   width: 35.2% !important;
 }
 
+@media (max-width: 1240px) { 
 
-@media (max-width: 375px) { 
+  .item {
+    width: 100% !important;
+  }
+
+  .item img{
+    width: 80%;
+    padding: 0px 20px 0px 0px;
+  }
+
+  .alice-carousel__stage-item.__active {
+    width: 32% !important;
+  }
+
+  .alice-carousel__stage-item {
+    width: 32% !important;
+  }
+}
+
+
+
+@media (max-width: 414px) { 
   .alice-carousel__stage-item.__active {
     width: 100% !important; 
+  }
+
+  .alice-carousel__stage-item {
+    width: 100% !important;
   }
 
   .item img{
@@ -23,3 +48,4 @@
   }
 
 }
+

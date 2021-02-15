@@ -9,6 +9,14 @@ const HeaderContainer = styled.header `
     margin-bottom: 15px;
 
 
+    @media (max-width: 1024px) {
+        padding: 0px;
+    }
+
+    @media (max-width: 414px) {
+        padding: 10px;
+    }
+
 `;
 
 const Logo = styled.div `
@@ -29,7 +37,20 @@ const TituloSub = styled.span`
 
 const Menu =  styled.nav `
     width: 26%;
-    @media (max-width: 375px) {
+
+    @media (max-width: 1240px) {
+        width: 40%;
+    }
+
+    @media (max-width: 1024px) {
+        width: 50%;
+    }
+
+    @media (max-width: 834px) {
+        width: 55%;
+    }
+
+    @media (max-width: 414px) {
         display: none;
     }
 `;
