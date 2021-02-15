@@ -215,7 +215,7 @@ const Carousel = () => (
                 responsive={responsive}
                 autoPlay
                 infinite
-                autoPlayInterval={10000}
+                autoPlayInterval={2000}
                 animationDuration={1000}
                 animationType="fadeout"
                 touchTracking={true}
