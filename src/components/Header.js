@@ -7,6 +7,8 @@ const HeaderContainer = styled.header `
     justify-items: flex-start;
     padding: 10px;
     margin-bottom: 15px;
+
+
 `;
 
 const Logo = styled.div `
@@ -27,6 +29,9 @@ const TituloSub = styled.span`
 
 const Menu =  styled.nav `
     width: 26%;
+    @media (max-width: 375px) {
+        display: none;
+    }
 `;
 
 const NavUl = styled.nav`

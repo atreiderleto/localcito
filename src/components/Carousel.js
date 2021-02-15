@@ -12,10 +12,19 @@ import foto3 from '../img/carousel/foto3.png';
 
 //styles components
 
-const SubTitle = styled.h3 `
+const SubTitle = styled.h3`
     font-size: 35px;
     color: #1B2B71;
     margin: 30px 0px 10px;
+
+    span {
+        color: #FFD23F;
+    }
+
+    @media (max-width: 375px) {
+        padding: 20px 20px 10px 10px;
+        font-size: 30px;
+    }
 `;
 
 const Container = styled.div`
@@ -23,6 +32,10 @@ const Container = styled.div`
     justify-content: space-between;
     width: 100%;
     
+    @media (max-width: 375px) {
+        padding: 0px;
+        font-size: 20px;
+    }
 `;
 
 const InfoContainer = styled.div`
@@ -30,12 +43,27 @@ const InfoContainer = styled.div`
     width: 84%;
     margin-top: 10px;
     span {
+        width: 100%;
         color: #A0A3BD;
     }
+
+    @media (max-width: 375px) {
+        width: 96%;
+        
+    }
+
 `;
 
 const Info = styled.div`
     width: 100%;
+
+    @media (max-width: 375px) {
+        width: 100%;
+        padding-left: 20px;
+        margin-top: 0px;
+        text-align: left;
+        font-size:  16px;
+    }
 `;
 
 const Locale = styled.button`
@@ -57,12 +85,16 @@ const Locale = styled.button`
         border-radius: 10px;
         color: #FFD23F;  
     }
+
+    @media (max-width: 375px) {
+        width: 50%;
+    }
 `;
 
 
 //carousel show elemenets by width
 const responsive = {
-    0: { items: 1 },
+    0: { items: 1 },    
     568: { items: 2 },
     1024: { items: 3 },
 };
@@ -84,7 +116,7 @@ const items = [
         <img src={foto2} />
         <InfoContainer>
             <Info>
-                <h3>Checho’s Grill</h3>
+                <h3>Liliana Corrales    </h3>
                 <span>Washinton, DC</span>
             </Info>
             <Locale>
@@ -97,7 +129,7 @@ const items = [
         <img src={foto3} />
         <InfoContainer>
             <Info>
-                <h3>Checho’s Grill</h3>
+                <h3>New wave haircuts</h3>
                 <span>Washinton, DC</span>
             </Info>
             <Locale>
@@ -148,16 +180,16 @@ const items = [
 
 const Carousel = () => (
     <>
-        <SubTitle>Nuevos Localsitos</SubTitle>
+        <SubTitle>Nuevos <span>Localsito</span></SubTitle>
         <Container>
             <AliceCarousel
                 mouseTracking
                 items={items}
                 responsive={responsive}
-                autoPlay
-                infinite
-                autoPlayInterval={1000}
-                animationDuration={1000}
+                // autoPlay
+                // infinite
+                // autoPlayInterval={1000}
+                // animationDuration={1000}
                 animationType="fadeout"
                 touchTracking={true}
                 disableDotsControls={true}

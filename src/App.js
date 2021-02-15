@@ -8,6 +8,11 @@ import styled from '@emotion/styled';
 const Container = styled.div `
   padding: 0px 80px 0px 80px;
   margin-top: 20px;
+
+  @media (max-width: 375px) {
+    padding: 0px;
+    margin-top: 0px;
+  }
 `;
 
 

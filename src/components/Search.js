@@ -10,16 +10,32 @@ const ContainerSearch = styled.div`
     background-position: center;
     padding: 0px;
     border-radius: 20px;
+
+    @media (max-width: 375px) { 
+        height: 300px;
+        background-size: cover;
+        padding: 30px;
+        border-radius: 0px;
+    }
 `;
 
 const Container = styled.div`
     padding: 60px;
+
+    @media (max-width: 375px) { 
+        padding: 0px;
+    }    
 `;
 
 const Titulo = styled.h2`
     width: 30%;
     font-size: 50px;
     color: #1B2B71;
+
+    @media (max-width: 375px) { 
+        display: none;
+    }
+
 `;
 
 const SelectContainer = styled.div`
@@ -27,7 +43,17 @@ const SelectContainer = styled.div`
 
     select:nth-of-type(2) {
         margin-left: 20px;
+
+        @media (max-width: 375px) { 
+            margin-left: 0px;
+            margin-top: 50px;
+        }
+
+        
     }
+
+    
+    
 `;
 
 const Select = styled.select`
@@ -54,6 +80,11 @@ const Select = styled.select`
         color: #FFD23F;
         border-color: #FFD23F;
     }
+
+    @media (max-width: 375px) { 
+        width: 100%;
+    }
+    
 `;
 
 const SearchBtn = styled.button`
@@ -73,6 +104,12 @@ const SearchBtn = styled.button`
     border-radius: 10px;
     img { 
         margin-left: 5px;
+    }
+
+    @media (max-width: 375px) { 
+        width: 100%;
+        margin-left: 0px;
+        margin-top: 50px;
     }
 `;
 

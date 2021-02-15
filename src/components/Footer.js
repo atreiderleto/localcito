@@ -4,6 +4,10 @@ const FooterInfo = styled.footer`
     margin-top: 30px;
     text-align: center;
     color: #CCCCCC;
+
+    @media (max-width: 375px) {
+        margin-bottom: 30px;
+    }
 `;
 
 

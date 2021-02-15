@@ -10,3 +10,16 @@
 .alice-carousel__stage-item.__active {
   width: 35.2% !important;
 }
+
+
+@media (max-width: 375px) { 
+  .alice-carousel__stage-item.__active {
+    width: 100% !important; 
+  }
+
+  .item img{
+    width: 90%;
+    padding: 0px 20px 0px 20px;
+  }
+
+}
