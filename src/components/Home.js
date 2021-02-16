@@ -3,6 +3,7 @@ import Search from './Search';
 import Carousel from './Carousel';
 import Footer from './Footer';
 
+
 const Home = () => {
     return (
         <>

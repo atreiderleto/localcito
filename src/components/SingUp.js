@@ -65,6 +65,10 @@ const Bg = styled.div`
   padding: 20px;
   border-radius: 30px;
 
+    .alice-carousel__stage-item * {
+	    margin-left: 115px !important;
+    }
+
     h3 {
       width: 59%;
       margin-top: 20px;
@@ -283,6 +287,7 @@ const SingUp = () => {
           </NewAcc>
 
         </Form>
+
         <Bg>
           <AliceCarousel
             mouseTracking
