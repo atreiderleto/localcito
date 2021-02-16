@@ -58,8 +58,8 @@ const Menu = styled.nav`
         width: 55%;
     }
 
-    @media (max-width: 414px) {
-        display: none;
+    @media (max-width: 320px) {
+        width: 48%;
     }
 `;
 
@@ -67,6 +67,19 @@ const NavUl = styled.nav`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 414px) {
+        justify-content: flex-end;
+
+        li:nth-of-type(1) {
+            display: none;
+        }
+
+        li:nth-of-type(2) {
+            display: none;
+        }
+    }
+
 
     li{
         list-style: none;
@@ -77,6 +90,7 @@ const NavUl = styled.nav`
             color: #1B2B71;
         }
     }
+
 `;
 
 const Singin = styled.li`
@@ -98,6 +112,8 @@ const Singin = styled.li`
             color: #FFD23F;
         }
     }
+
+    
 `;
 
 
