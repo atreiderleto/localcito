@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
+@import "react-alice-carousel/lib/alice-carousel.css";
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Lexend Deca';
+}
+
+.alice-carousel__stage-item * {
+	margin-left: 0px !important;
+}
+
+.alice-carousel__stage-item {
+  margin-left: 6px;
+}
+
+@media (max-width: 414px) {
+  .alice-carousel__stage-item {
+    width: 99% !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .alice-carousel__stage-item {
+    width: 98.5% !important;
+  }
+}

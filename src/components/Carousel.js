@@ -36,19 +36,33 @@ const Container = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    
+
+    @media (max-width: 1024px) {
+        img {
+            width: 80%;
+        }
+    }
+
     @media (max-width: 414px) {
+        
+        img {
+            width: 95%
+        }
+
         padding: 0px;
         font-size: 20px;
     }
+
 `;
+
 
 const InfoContainer = styled.div`
     display:flex;
-    width: 84%;
+    width: 89%;
     margin-top: 10px;
+
     span {
-        width: 100%;
+        width: 50%;
         color: #A0A3BD;
     }
 
@@ -77,7 +91,7 @@ const Info = styled.div`
 
     @media (max-width: 414px) {
         width: 100%;
-        padding-left: 20px;
+        padding-left: 0px;
         margin-top: 0px;
         text-align: left;
         font-size:  16px;
@@ -122,7 +136,7 @@ const Locale = styled.button`
 const responsive = {
     0: { items: 1 },
     568: { items: 2 },
-    1024: { items: 2 },
+    768: { items: 2 },
     1240: { items: 3},
 };
 
@@ -139,7 +153,7 @@ const items = [
             </Locale>
         </InfoContainer>
     </div>,
-    <div className="item" data-value="1">
+    <div className="item" data-value="2">
         <img src={foto2} />
         <InfoContainer>
             <Info>
@@ -152,7 +166,7 @@ const items = [
         </InfoContainer>
     </div>,
 
-    <div className="item" data-value="1">
+    <div className="item" data-value="3">
         <img src={foto3} />
         <InfoContainer>
             <Info>
@@ -165,7 +179,7 @@ const items = [
         </InfoContainer>
     </div>,
 
-    <div className="item" data-value="1">
+    <div className="item" data-value="4">
         <img src={foto1} />
         <InfoContainer>
             <Info>
@@ -178,7 +192,7 @@ const items = [
         </InfoContainer>
     </div>,
 
-    <div className="item" data-value="1">
+    <div className="item" data-value="5">
         <img src={foto2} />
         <InfoContainer>
             <Info>
@@ -191,7 +205,7 @@ const items = [
         </InfoContainer>
     </div>,
 
-    <div className="item" data-value="1">
+    <div className="item" data-value="6">
         <img src={foto3} />
         <InfoContainer>
             <Info>
@@ -213,13 +227,14 @@ const Carousel = () => (
                 mouseTracking
                 items={items}
                 responsive={responsive}
-                autoPlay
+                // autoPlay
                 infinite
-                autoPlayInterval={2000}
-                animationDuration={1000}
+                // autoPlayInterval={1000}
+                // animationDuration={1000}
                 animationType="fadeout"
                 touchTracking={true}
                 disableDotsControls={true}
+                
             />
         </Container>
     </>
