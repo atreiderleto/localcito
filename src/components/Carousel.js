@@ -227,10 +227,10 @@ const Carousel = () => (
                 mouseTracking
                 items={items}
                 responsive={responsive}
-                // autoPlay
+                autoPlay
                 infinite
-                // autoPlayInterval={1000}
-                // animationDuration={1000}
+                autoPlayInterval={1000}
+                animationDuration={1000}
                 animationType="fadeout"
                 touchTracking={true}
                 disableDotsControls={true}
