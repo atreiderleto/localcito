@@ -1,212 +1,22 @@
-import { Link } from 'react-router-dom';
-import styled from '@emotion/styled';
+
+import { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { Main, Logo, Titulo, TituloSub, Bg, Form, Recover, NewAcc } from '../Ui/singupStyles';
+import fire from '../config/Fire';
+import 'firebase/auth';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import logo from '../img/header/logo.svg'
-import bg from '../img/singup/bg1.png'
+import logo from '../img/header/logo.svg';
 
 import AliceCarousel from 'react-alice-carousel';
 import Footer from './Footer';
+import Error from './Error';
 import '../css/singup.css';
 
-//temporal carouse picture the real comes from firebase
+//carouse picture this is Static
 import foto1 from '../img/carousel/foto1.png';
 import foto2 from '../img/carousel/foto2.png';
 import foto3 from '../img/carousel/foto3.png';
 
-
-const Main = styled.main`
-  display: flex;
-  justify-content: space-between;
-  padding: 30px;
-  
-  a {
-    text-decoration: none;
-  }
-
-  @media (max-width: 1240px) {
-    padding: 10px;
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 40px;
-  }
-`;
-
-const Logo = styled.div`
-    display: flex;
-    justify-content: center;
-    flex-flow: row wrap;
-    align-items: center;
-    margin-bottom: 50px;
-`;
-
-
-const Titulo = styled.h1`
-    margin: 0px 0px 0px 10px;
-    font-size: 25px;
-    color: #1B2B71;
-    
-`;
-
-const TituloSub = styled.span`
-    color: #FFD23F;
-    
-`;
-
-const Bg = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  background-image: url(${bg});
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 60%;
-  height: 800px;
-  padding: 20px;
-  border-radius: 30px;
-
-    .alice-carousel__stage-item * {
-	    margin-left: 115px !important;
-    }
-
-    h3 {
-      width: 59%;
-      margin-top: 20px;
-      color: #FFFFFF;
-      text-align: center;
-    }
-
-    @media (max-width: 1024px) {
-      width: 100%;
-      font-size: 40px;
-      text-align: center;
-    }
-
-    @media (max-width: 1024px) {
-      display: none;
-    }
-  }
-`;
-
-const Form = styled.form`
-  display: flex;
-  flex-flow: column wrap;
-  justify-content:center;
-  align-items: center;
-  width: 36%;
-  color: #1B2B71;
-
-  @media (max-width: 1024px) {
-    width: 100%;
-  }
-
-
-
-  img {
-    width: 100%;
-  }
-
-  label {
-    width: 70%;
-    margin-top: 30px;
-
-    @media (max-width: 1240px) {
-      width: 90%;
-  }
-  }
-
-  input[type=email],
-  input[type=password],
-  input[type=text] {
-    width: 70%;
-    height: 50px;
-    border-radius: 10px;
-    border: 1px solid #1B2B71;
-    margin-top: 5px;
-    padding-left: 10px;
-    color: #1B2B71;
-    font-size: 18px; 
-
-    @media (max-width: 1024px) {
-      width: 90%;
-    }
-  }
-
-  input[type=submit] {
-    width: 72%;
-    height: 50px;
-    border-radius: 10px;
-    margin-top: 30px;
-    font-size: 16px;
-    background-color: #FFD23F;
-    border: none;
-    cursor: pointer;
-
-    :hover {
-      color: #FFD23F;
-      background-color: #3253E3
-    }
-
-    @media (max-width: 1024px) {
-      width: 92%;
-    }
-    
-  }
-
-`;
-
-const Recover = styled.div` 
-  display: flex;
-  flex-direction: column wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 72%;
-  margin-top: 30px;
-
-  label {
-    margin-left: 10px;
-  }
-
-  a { 
-    width: 50%;
-    text-align: right;
-  }
-
-  @media (max-width: 1024px) {
-      width: 92%;
-    }
-`;
-
-const NewAcc = styled.div`
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-top: 100px;
-
-  a {
-    width: 72%;
-    height: 40px;
-    border-radius: 10px;
-    margin-top: 30px;
-    padding-top: 20px;
-    font-size: 16px;
-    border: 1px solid #3253E3; 
-    text-align:center;
-    color: #3253E3;
-
-    :hover {
-      color: #FFD23F;
-      background-color: #3253E3
-    }
-
-    @media (max-width: 1024px) {
-      width: 90%;
-    }
-
-  }
-`;
 
 //Carousel logic
 
@@ -243,49 +53,144 @@ const items = [
 // Component Logic
 const SingUp = () => {
 
-  const formObj = {
-    name: '',
+  //component states
+  const [data, setData] = useState({
+    username: '',
     email: '',
     password: '',
-    confirm: ''
+    confirmPassword: '',
+    terms: 'off'
+  });
+
+  const [error, setError] = useState('');
+
+  const history = useHistory();
+
+  const handleData = e => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  //Validation & user Registration in Firebase 
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const { username, email, password, confirmPassword, terms } = data;
+
+    if (username === '') {
+      setError('El Nombre es Obligatorio');
+      return;
+    }
+
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(email)) {
+      setError('Ingrese un Email Valido');
+      return;
+    }
+
+    if (password.length < 6) {
+      setError('Las Contraseña requiere minimo 6 Caracteres');
+      return;
+    }
+
+    if (password != confirmPassword) {
+      setError('Las Contraseñas no Coinciden');
+      return;
+    }
+
+    if (terms != 'on') {
+      setError('Debe Aceptar los Terminos y  Condiciones');
+      return;
+    }
+
+    async function registerUser(data) {
+
+      try {
+
+        const { email, password, username } = data;
+        const addUser = await fire.auth().createUserWithEmailAndPassword(email, password);
+        await addUser.user.updateProfile({
+          displayName: username
+        });
+
+         return  history.push('/singinsucceful');
+
+        
+
+      } catch (error) {
+        if (error.message === 'The email address is already in use by another account.') {
+          setError('El Email ya esta siendo usado por otra cuenta');
+        }
+      }
+    }
+
+    registerUser(data);  
   }
 
   return (
     <>
       <Main>
-        <Form>
+        <Form
+          onSubmit={handleSubmit}
+          noValidate
+        >
           <Logo>
             <Link to='/'><img src={logo} alt="logo" /></Link>
             <Link to='/'><Titulo>Local<TituloSub>sito</TituloSub></Titulo></Link>
           </Logo>
 
+
           <label htmlFor="name">Nombre</label>
-          <input type="text" name="name" value={formObj.email} placeholder="John Doe" />
+          <input
+            type="text"
+            name="username"
+            placeholder="John Doe"
+            onChange={handleData}
+          />
 
           <label htmlFor="email">Email</label>
-          <input type="email" name="email" value={formObj.email} placeholder="john@mail.com" />
+          <input
+            type="email"
+            name="email"
+            placeholder="john@mail.com"
+            onChange={handleData}
+          />
 
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" value={formObj.password} placeholder="***************" />
+          <input
+            type="password"
+            name="password"
+            onChange={handleData}
+          />
 
           <label htmlFor="confirm">Confirmar Password</label>
-          <input type="password" name="confirm" value={formObj.password} placeholder="***************" />
-
-          <input type="submit" value="Registrame" />
+          <input
+            type="password"
+            name="confirmPassword"
+            onChange={handleData}
+          />
 
           <Recover>
             <div>
-              <input type="checkbox" name="remember" />
-              <label htmlFor="remember">Al Crear una Cuenta Acepto los terminos y condiciones de Uso</label>
+              <input
+                type="checkbox"
+                name="terms"
+                onChange={handleData}
+              />
+
+              <label htmlFor="terms">Al Crear una Cuenta Acepto los terminos y condiciones de Uso</label>
             </div>
           </Recover>
 
+          {error ? <Error error={error} /> : null}
+
+          <input type="submit" value="Registrame" />
 
           <NewAcc>
             <h3>Ya tiene  Cuenta?</h3>
             <Link to="/singin">Entrar con mi Cuenta</Link>
           </NewAcc>
-
         </Form>
 
         <Bg>

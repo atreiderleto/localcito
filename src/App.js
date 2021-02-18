@@ -1,10 +1,17 @@
 import Home from './components/Home';
 import SingIn from './components/SingIn';
 import SingUp from './components/SingUp';
+import SingInSucceful from './components/SingInSucceful';
 import HowItWorks from './components/HowItWorks';
 
 import styled from '@emotion/styled';
 
+
+
+//context auth 
+import AuthProvider from './context/authContext';
+
+//react router
 import {
   BrowserRouter as Router,
   Switch,
@@ -36,6 +43,7 @@ const Container = styled.div`
 function App() {
   return (
     <Router>
+      <AuthProvider>
       <Switch>
         <Container>
           <Route exact path="/">
@@ -45,13 +53,17 @@ function App() {
             <SingIn />
           </Route>
           <Route path="/singup">
-            <SingUp />
+            <SingUp/>
           </Route>
           <Route path="/howitworks">
             <HowItWorks />
           </Route>
+          <Route path="/singinsucceful">
+            <SingInSucceful />
+          </Route>
         </Container>
       </Switch>
+      </AuthProvider>
     </Router>
   );
 }
