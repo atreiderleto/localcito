@@ -27,6 +27,7 @@ export const Logo = styled.div`
     display: flex;
     flex-flow: row wrap;
     align-items: center;
+    width: 20%;
 `;
 
 export const Titulo = styled.h1`
@@ -63,7 +64,7 @@ export const Menu = styled.nav`
 
 export const NavUl = styled.nav`
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 
     @media (max-width: 414px) {
@@ -82,7 +83,7 @@ export const NavUl = styled.nav`
     li{
         list-style: none;
         border-radius: 10px;
-        
+        margin-right: 20px;
 
         a {
             color: #1B2B71;
